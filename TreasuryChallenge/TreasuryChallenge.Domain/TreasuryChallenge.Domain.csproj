@@ -5,8 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\" />
+    <Folder Include="Commands\Result\" />
+    <Folder Include="Utils\" />
     <Folder Include="Repositories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TreasuryChallenge.Shared\TreasuryChallenge.Shared.csproj" />
   </ItemGroup>
 
 </Project>
