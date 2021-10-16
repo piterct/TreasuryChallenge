@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
+using TreasuryChallenge.Domain.Commands.Inputs;
+using TreasuryChallenge.Domain.Commands.Result;
+using TreasuryChallenge.Domain.Handlers;
 
 namespace TreasuryChallenge.Api.Controllers
 {
@@ -19,14 +22,15 @@ namespace TreasuryChallenge.Api.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        [Route("writeLines")]
-        public async Task<IActionResult> WriteLines()
+        [Route("writeLines/{lines:int}")]
+        [ProducesResponseType(typeof(GetLinesAmountToWriteCommandResult), StatusCodes.Status200OK)]
+        public async Task<IActionResult> WriteLines(int lines, [FromServices] TreasuryHandler handler)
         {
             try
             {
-                var customers = await _customerJsonRepository.SortCustomersByName();
+                var result = await handler.Handle(new GetLinesAmountToWriteCommandInput { LinesAmount = lines });
 
-                return GetResult(new SortCustomerByNameCommandResult(true, "Success", customers.OrderBy(x => x.Name).ToList(), StatusCodes.Status200OK, null));
+                return GetResult(result);
             }
             catch (Exception exception)
             {
