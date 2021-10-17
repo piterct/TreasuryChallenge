@@ -15,18 +15,16 @@ namespace TreasuryChallenge.Domain.Entity
             this.MaxLengthContent = maxLengthContent;
         }
 
-        public async Task WriteFile(int inputValue)
+        public async Task<StringBuilder> WriteFile(int inputValue)
         {
-            string fileName = $@"{this.FileName}.txt";
-            int BufferSize = 65536;
+            StringBuilder textFile = new StringBuilder();
 
-            using (StreamWriter write = new StreamWriter(fileName, false, Encoding.UTF8, BufferSize))
+            for (int i = 0; i < inputValue; i++)
             {
-                for (int i = 0; i < inputValue; i++)
-                {
-                    await write.WriteLineAsync(await GenerateContent());
-                };
+                textFile.Append(await GenerateContent()).AppendLine();
             };
+
+            return textFile;
         }
 
         public async Task<string> GenerateContent(string updatedAlphabetLetters = "", string content = "")

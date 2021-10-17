@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using TreasuryChallenge.Domain.Commands.Inputs;
 using TreasuryChallenge.Domain.Commands.Result;
@@ -20,8 +21,8 @@ namespace TreasuryChallenge.Domain.Handlers
 
             TextFile textFile = new TextFile("aleatory-file", 7);
 
-            await textFile.WriteFile(command.LinesAmount);
-
+   
+            StringBuilder file = await textFile.WriteFile(command.LinesAmount);
 
 
             return new GetLinesAmountToWriteCommandResult(true, "Success!", stopwatch.ElapsedMilliseconds, StatusCodes.Status200OK, command.Notifications);
