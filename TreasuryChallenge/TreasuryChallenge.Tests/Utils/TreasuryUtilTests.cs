@@ -25,7 +25,7 @@ namespace TreasuryChallenge.Tests.Utils
         }
 
         [TestMethod]
-        public void Generete_Char_ReturnStringLengthIqualOne()
+        public void Generete_Char_ReturnStringLengthEqualOne()
         {
             string alphabetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string resultChar = TreasuryUtil.GetChar(alphabetLetters);

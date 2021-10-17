@@ -6,6 +6,12 @@ namespace TreasuryChallenge.Domain.Commands.Inputs
 {
     public class GetLinesAmountToWriteCommandInput : Notifiable, ICommand
     {
+        public GetLinesAmountToWriteCommandInput() { }
+
+        public GetLinesAmountToWriteCommandInput(int linesAmount)
+        {
+            LinesAmount = linesAmount;
+        }
         public int LinesAmount { get; set; }
 
         public void Validate()
@@ -14,6 +20,7 @@ namespace TreasuryChallenge.Domain.Commands.Inputs
            new Contract()
                .Requires()
                .IsNotNull(LinesAmount, "LinesAmount", "This value is not valid!")
+               .AreNotEquals(0, LinesAmount, "LinesAmount", "This value is not valid!")
                 );
         }
     }
