@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreasuryChallenge.Api", "TreasuryChallenge.Api\TreasuryChallenge.Api.csproj", "{26C94EFD-F476-4AF3-AE38-0753CAB0F932}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TreasuryChallenge.Api", "TreasuryChallenge.Api\TreasuryChallenge.Api.csproj", "{26C94EFD-F476-4AF3-AE38-0753CAB0F932}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreasuryChallenge.Domain", "TreasuryChallenge.Domain\TreasuryChallenge.Domain.csproj", "{1BC64F5E-2592-4F4B-8266-2F1AF5F61FF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TreasuryChallenge.Domain", "TreasuryChallenge.Domain\TreasuryChallenge.Domain.csproj", "{1BC64F5E-2592-4F4B-8266-2F1AF5F61FF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreasuryChallenge.Infra", "TreasuryChallenge.Infra\TreasuryChallenge.Infra.csproj", "{490EDB46-5253-4873-85B2-58D3CB2CDDE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TreasuryChallenge.Infra", "TreasuryChallenge.Infra\TreasuryChallenge.Infra.csproj", "{490EDB46-5253-4873-85B2-58D3CB2CDDE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreasuryChallenge.Shared", "TreasuryChallenge.Shared\TreasuryChallenge.Shared.csproj", "{8FB89716-F4A0-4499-B4DC-4450C363D65B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TreasuryChallenge.Shared", "TreasuryChallenge.Shared\TreasuryChallenge.Shared.csproj", "{8FB89716-F4A0-4499-B4DC-4450C363D65B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreasuryChallenge.Tests", "TreasuryChallenge.Tests\TreasuryChallenge.Tests.csproj", "{C5AF695F-747B-4B20-88FA-4972973E9087}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8FB89716-F4A0-4499-B4DC-4450C363D65B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FB89716-F4A0-4499-B4DC-4450C363D65B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FB89716-F4A0-4499-B4DC-4450C363D65B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5AF695F-747B-4B20-88FA-4972973E9087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5AF695F-747B-4B20-88FA-4972973E9087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5AF695F-747B-4B20-88FA-4972973E9087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5AF695F-747B-4B20-88FA-4972973E9087}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

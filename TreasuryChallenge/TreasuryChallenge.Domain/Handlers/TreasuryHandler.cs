@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TreasuryChallenge.Domain.Commands.Inputs;
 using TreasuryChallenge.Domain.Commands.Result;
-using TreasuryChallenge.Domain.Entity;
+using TreasuryChallenge.Domain.Entities;
 using TreasuryChallenge.Domain.Repositories;
 
 namespace TreasuryChallenge.Domain.Handlers

@@ -3,7 +3,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TreasuryChallenge.Domain.Utils;
 
-namespace TreasuryChallenge.Domain.Entity
+namespace TreasuryChallenge.Domain.Entities
 {
     public class TextFile
     {
