@@ -14,10 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Utils\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\TreasuryChallenge.Domain\TreasuryChallenge.Domain.csproj" />
   </ItemGroup>
 
