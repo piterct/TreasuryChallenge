@@ -20,7 +20,7 @@ namespace TreasuryChallenge.Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpPost]
         [AllowAnonymous]
         [Route("writeLines/{lines:int}")]
         [ProducesResponseType(typeof(GetLinesAmountToWriteCommandResult), StatusCodes.Status200OK)]

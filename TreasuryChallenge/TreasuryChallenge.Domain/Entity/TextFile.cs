@@ -7,8 +7,8 @@ namespace TreasuryChallenge.Domain.Entity
 {
     public class TextFile
     {
-        public string FileName { get; set; }
-        public int MaxLengthContent { get; set; }
+        public string FileName { get; private set; }
+        public int MaxLengthContent { get; private set; }
         public TextFile(string fileName, int maxLengthContent)
         {
             this.FileName = fileName;
