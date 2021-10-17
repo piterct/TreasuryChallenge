@@ -1,10 +1,11 @@
 ﻿using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using TreasuryChallenge.Domain.Repositories;
 
 namespace TreasuryChallenge.Infra.Repositories
 {
-    public class TextFileRepository
+    public class TextFileRepository : ITextFileRepository
     {
         public async Task WriteFile(string filename, string file)
         {
@@ -14,9 +15,7 @@ namespace TreasuryChallenge.Infra.Repositories
 
             using (StreamWriter write = new StreamWriter(fileName, false, Encoding.UTF8, BufferSize))
             {
-
-                await write.WriteLineAsync(file);
-
+                await write.WriteAsync(file);
             };
         }
     }

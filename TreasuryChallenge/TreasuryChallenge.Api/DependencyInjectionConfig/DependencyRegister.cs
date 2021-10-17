@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TreasuryChallenge.Domain.Handlers;
+using TreasuryChallenge.Domain.Repositories;
+using TreasuryChallenge.Infra.Repositories;
 
 namespace TreasuryChallenge.Api.DependencyInjectionConfig
 {
@@ -10,6 +12,10 @@ namespace TreasuryChallenge.Api.DependencyInjectionConfig
         {
             #region Handlers
             services.AddTransient<TreasuryHandler, TreasuryHandler>();
+            #endregion
+
+            #region Repositories
+            services.AddTransient<ITextFileRepository, TextFileRepository>();
             #endregion
         }
     }

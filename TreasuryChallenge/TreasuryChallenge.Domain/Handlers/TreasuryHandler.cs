@@ -7,11 +7,17 @@ using System.Threading.Tasks;
 using TreasuryChallenge.Domain.Commands.Inputs;
 using TreasuryChallenge.Domain.Commands.Result;
 using TreasuryChallenge.Domain.Entity;
+using TreasuryChallenge.Domain.Repositories;
 
 namespace TreasuryChallenge.Domain.Handlers
 {
     public class TreasuryHandler : Notifiable
     {
+        private readonly ITextFileRepository _textFileRepository;
+        public TreasuryHandler(ITextFileRepository textFileRepository)
+        {
+            _textFileRepository = textFileRepository;
+        }
         public async Task<GetLinesAmountToWriteCommandResult> Handle(GetLinesAmountToWriteCommandInput command)
         {
             var stopwatch = Stopwatch.StartNew();
@@ -21,8 +27,8 @@ namespace TreasuryChallenge.Domain.Handlers
 
             TextFile textFile = new TextFile("aleatory-file", 7);
 
-   
-            StringBuilder file = await textFile.WriteFile(command.LinesAmount);
+            StringBuilder file = await textFile.CreateFile(command.LinesAmount);
+            await _textFileRepository.WriteFile(textFile.FileName, file.ToString());
 
 
             return new GetLinesAmountToWriteCommandResult(true, "Success!", stopwatch.ElapsedMilliseconds, StatusCodes.Status200OK, command.Notifications);

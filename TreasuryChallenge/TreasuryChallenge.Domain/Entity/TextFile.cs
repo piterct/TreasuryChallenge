@@ -15,7 +15,7 @@ namespace TreasuryChallenge.Domain.Entity
             this.MaxLengthContent = maxLengthContent;
         }
 
-        public async Task<StringBuilder> WriteFile(int inputValue)
+        public async Task<StringBuilder> CreateFile(int inputValue)
         {
             StringBuilder textFile = new StringBuilder();
 
