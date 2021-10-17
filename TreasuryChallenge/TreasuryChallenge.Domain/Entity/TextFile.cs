@@ -1,4 +1,6 @@
 ﻿using System.IO;
+using System.Text;
+using System.Threading.Tasks;
 using TreasuryChallenge.Domain.Utils;
 
 namespace TreasuryChallenge.Domain.Entity
@@ -13,20 +15,21 @@ namespace TreasuryChallenge.Domain.Entity
             this.MaxLengthContent = maxLengthContent;
         }
 
-        public void WriteFile(int inputValue)
+        public async Task WriteFile(int inputValue)
         {
             string fileName = $@"{this.FileName}.txt";
+            int BufferSize = 65536;
 
-            using (StreamWriter write = new StreamWriter(fileName))
+            using (StreamWriter write = new StreamWriter(fileName, false, Encoding.UTF8, BufferSize))
             {
                 for (int i = 0; i < inputValue; i++)
                 {
-                    write.WriteLine(GenerateContent(string.Empty));
+                    await write.WriteLineAsync(await GenerateContent());
                 };
             };
         }
 
-        public string GenerateContent(string updatedAlphabetLetters = "", string content = "")
+        public async Task<string> GenerateContent(string updatedAlphabetLetters = "", string content = "")
         {
             string alphabetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             if (content.Length > 0)
@@ -46,7 +49,7 @@ namespace TreasuryChallenge.Domain.Entity
                     found = TreasuryUtil.FoundChar(content, charGenerated);
                 }
             }
-            return GenerateContent(alphabetLetters, content + charGenerated);
+            return await GenerateContent(alphabetLetters, content + charGenerated);
         }
     }
 }
