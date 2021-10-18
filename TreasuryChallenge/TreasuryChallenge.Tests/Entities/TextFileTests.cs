@@ -10,7 +10,7 @@ namespace TreasuryChallenge.Tests.Entities
 
         public TextFileTests()
         {
-            _textFile = new TextFile("file-teste", 8);
+            _textFile = new TextFile("file-teste", 8, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
         }
 
         [TestMethod]
