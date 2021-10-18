@@ -9,10 +9,12 @@ namespace TreasuryChallenge.Domain.Entities
     {
         public string FileName { get; private set; }
         public int MaxLengthContent { get; private set; }
-        public TextFile(string fileName, int maxLengthContent)
+        public string Characters { get; private set; }
+        public TextFile(string fileName, int maxLengthContent, string characters)
         {
             this.FileName = fileName;
             this.MaxLengthContent = maxLengthContent;
+            this.Characters = characters;
         }
 
         public async Task<StringBuilder> CreateFile(int inputValue)
@@ -29,7 +31,7 @@ namespace TreasuryChallenge.Domain.Entities
 
         public async Task<string> GenerateContent(string updatedAlphabetLetters = "", string content = "")
         {
-            string alphabetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string alphabetLetters = this.Characters;
             if (content.Length > 0)
                 alphabetLetters = updatedAlphabetLetters;
 
