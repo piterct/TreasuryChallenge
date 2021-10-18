@@ -4,7 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System.IO;
 using TreasuryChallenge.Api.DependencyInjectionConfig;
+using TreasuryChallenge.Shared.Settings;
 
 namespace TreasuryChallenge.Api
 {
@@ -20,6 +22,14 @@ namespace TreasuryChallenge.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<TreasurySettings>(Configuration.GetSection("TreasurySettings"));
+            var builder = new ConfigurationBuilder()
+             .SetBasePath(Directory.GetCurrentDirectory())
+             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+            builder.AddEnvironmentVariables();
+            builder.Build();
+
             services.AddControllers();
 
             services.AddSwaggerGen(x =>
