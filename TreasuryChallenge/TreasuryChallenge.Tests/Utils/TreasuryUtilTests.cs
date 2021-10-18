@@ -7,6 +7,7 @@ namespace TreasuryChallenge.Tests.Utils
     public class TreasuryUtilTests
     {
         [TestMethod]
+        [TestCategory("Utils")]
         public void Valid_OneCharInsideOfString_ReturnTrue()
         {
             string content = "UJHSNKL";
@@ -16,6 +17,7 @@ namespace TreasuryChallenge.Tests.Utils
         }
 
         [TestMethod]
+        [TestCategory("Utils")]
         public void Valid_OneCharInsideOfString_ReturnFalse()
         {
             string content = "UJHSNKL";
@@ -25,6 +27,7 @@ namespace TreasuryChallenge.Tests.Utils
         }
 
         [TestMethod]
+        [TestCategory("Utils")]
         public void Generete_Char_ReturnStringLengthEqualOne()
         {
             string alphabetLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
