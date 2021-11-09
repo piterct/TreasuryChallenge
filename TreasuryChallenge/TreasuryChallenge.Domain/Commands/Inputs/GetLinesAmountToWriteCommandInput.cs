@@ -21,6 +21,7 @@ namespace TreasuryChallenge.Domain.Commands.Inputs
                .Requires()
                .IsNotNull(LinesAmount, "LinesAmount", "This value is not valid!")
                .AreNotEquals(0, LinesAmount, "LinesAmount", "This value is not valid!")
+               .IsLowerOrEqualsThan(0, LinesAmount, "LinesAmount", "This value is not valid!")
                 );
         }
     }
