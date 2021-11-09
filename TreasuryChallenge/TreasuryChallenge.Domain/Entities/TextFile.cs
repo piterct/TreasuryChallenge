@@ -17,19 +17,33 @@ namespace TreasuryChallenge.Domain.Entities
             this.Characters = characters;
         }
 
-        public async Task<StringBuilder> CreateFile(int inputValue)
+        public async Task<StringBuilder> CreateFile(int lines)
+        {
+            StringBuilder textFile = new StringBuilder();
+
+            for (int i = 0; i < lines; i++)
+            {
+                string text = TreasuryUtil.RandomWord(this.MaxLengthContent, this.Characters);
+                textFile.Append(text).AppendLine();
+            };
+
+            return await Task.FromResult(textFile);
+        }
+
+        public async Task<StringBuilder> CreateFileOld(int inputValue)
         {
             StringBuilder textFile = new StringBuilder();
 
             for (int i = 0; i < inputValue; i++)
             {
-                textFile.Append(await GenerateContent()).AppendLine();
+                textFile.Append(await GenerateContentOld()).AppendLine();
             };
 
             return textFile;
         }
 
-        public async Task<string> GenerateContent(string updatedAlphabetLetters = "", string content = "")
+
+        public async Task<string> GenerateContentOld(string updatedAlphabetLetters = "", string content = "")
         {
             string alphabetLetters = this.Characters;
             if (content.Length > 0)
@@ -49,7 +63,7 @@ namespace TreasuryChallenge.Domain.Entities
                     found = TreasuryUtil.FoundChar(content, charGenerated);
                 }
             }
-            return await GenerateContent(alphabetLetters, content + charGenerated);
+            return await GenerateContentOld(alphabetLetters, content + charGenerated);
         }
     }
 }
