@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using TreasuryChallenge.Domain.Utils;
@@ -30,6 +31,7 @@ namespace TreasuryChallenge.Domain.Entities
             return await Task.FromResult(textFile);
         }
 
+        [Obsolete]
         public async Task<StringBuilder> CreateFileOld(int inputValue)
         {
             StringBuilder textFile = new StringBuilder();
@@ -42,7 +44,7 @@ namespace TreasuryChallenge.Domain.Entities
             return textFile;
         }
 
-
+        [Obsolete]
         public async Task<string> GenerateContentOld(string updatedAlphabetLetters = "", string content = "")
         {
             string alphabetLetters = this.Characters;
