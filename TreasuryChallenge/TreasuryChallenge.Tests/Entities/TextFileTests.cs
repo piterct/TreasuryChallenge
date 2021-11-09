@@ -17,7 +17,7 @@ namespace TreasuryChallenge.Tests.Entities
         [TestCategory("Entities")]
         public void Generete_Char_ReturnTotalCharEqualThePastValue()
         {
-            string content = _textFile.GenerateContent().Result;
+            string content = _textFile.GenerateContentOld().Result;
 
             Assert.AreEqual(8, content.Length);
         }
@@ -26,7 +26,7 @@ namespace TreasuryChallenge.Tests.Entities
         [TestCategory("Entities")]
         public void Generete_Char_ReturnTotalCharDifferentThePastValue()
         {
-            string content = _textFile.GenerateContent().Result;
+            string content = _textFile.GenerateContentOld().Result;
 
             Assert.AreNotEqual(2, content.Length);
         }
