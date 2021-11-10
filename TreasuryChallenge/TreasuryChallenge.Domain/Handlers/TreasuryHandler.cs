@@ -36,17 +36,15 @@ namespace TreasuryChallenge.Domain.Handlers
 
             List<string> listWords = await textFile.CreateWords(command.LinesAmount);
 
-            List<string> duplicates = await textFile.GetDuplicateWords(listWords);
+            listWords = listWords.Distinct().ToList();
 
-            while (duplicates.Count > 1)
+            while (listWords.Count < command.LinesAmount)
             {
-                listWords = listWords.Distinct().ToList();
-
-                List<string> newWords = await textFile.CreateWords(duplicates.Count);
+                List<string> newWords = await textFile.CreateWords(command.LinesAmount - listWords.Count());
 
                 listWords.AddRange(newWords);
 
-                duplicates = await textFile.GetDuplicateWords(listWords);
+                listWords = listWords.Distinct().ToList();
             }
 
             StringBuilder words = await textFile.CreateFile(listWords);
