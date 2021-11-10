@@ -1,7 +1,10 @@
 ﻿using Flunt.Notifications;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TreasuryChallenge.Domain.Commands.Inputs;
@@ -31,8 +34,23 @@ namespace TreasuryChallenge.Domain.Handlers
 
             TextFile textFile = new TextFile(_treasurySettings.NameFile, _treasurySettings.MaxLengthCode, _treasurySettings.Characters);
 
-            StringBuilder file = await textFile.CreateFile(command.LinesAmount);
-            await _textFileRepository.WriteFile(textFile.FileName, file.ToString());
+            //StringBuilder file = await textFile.CreateFile(command.LinesAmount);
+
+            var file = await textFile.CreateFile(command.LinesAmount);
+
+            IEnumerable<string> duplicates = file.GroupBy(x => x)
+                                        .Where(g => g.Count() > 1)
+                                        .Select(x => x.Key).ToList();
+
+
+
+            StringBuilder words = new StringBuilder();
+            for (int i = 0; i < file.Count; i++)
+            {
+                words.AppendLine(file[i].ToString());
+            }
+
+            await _textFileRepository.WriteFile(textFile.FileName, words.ToString());
 
             return new GetLinesAmountToWriteCommandResult(true, $"A file with { command.LinesAmount } lines was generated.", stopwatch.ElapsedMilliseconds, StatusCodes.Status200OK, command.Notifications);
         }
