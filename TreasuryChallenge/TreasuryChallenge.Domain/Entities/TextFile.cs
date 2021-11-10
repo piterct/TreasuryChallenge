@@ -42,6 +42,17 @@ namespace TreasuryChallenge.Domain.Entities
             return await Task.FromResult(duplicates);
         }
 
+        public async Task<StringBuilder> CreateFile(List<string> listWords)
+        {
+            StringBuilder words = new StringBuilder();
+            for (int i = 0; i < listWords.Count(); i++)
+            {
+                words.AppendLine(listWords[i].ToString());
+            }
+
+            return await Task.FromResult(words);
+        }
+
         [Obsolete]
         public async Task<StringBuilder> CreateFileOld(int inputValue)
         {
