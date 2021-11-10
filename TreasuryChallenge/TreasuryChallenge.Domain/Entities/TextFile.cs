@@ -20,25 +20,22 @@ namespace TreasuryChallenge.Domain.Entities
             this.Characters = characters;
         }
 
-        public async Task<List<string>> CreateFile(int lines)
+        public async Task<List<string>> CreateWords(int lines)
         {
-           // StringBuilder textFile = new StringBuilder();
             List<string> listWords = new List<string>();
-            
 
             for (int i = 0; i < lines; i++)
             {
                 string text = TreasuryUtil.RandomWord(this.MaxLengthContent, this.Characters);
-               // textFile.Append(text).AppendLine();
                 listWords.Add(text);
             };
 
             return await Task.FromResult(listWords);
         }
 
-        public async Task<IEnumerable<string>> CreateFile(List<string> words)
+        public async Task<List<string>> GetDuplicateWords(List<string> words)
         {
-            IEnumerable<string> duplicates = words.GroupBy(x => x)
+            List<string> duplicates = words.GroupBy(x => x)
                                         .Where(g => g.Count() > 1)
                                         .Select(x => x.Key).ToList();
 
